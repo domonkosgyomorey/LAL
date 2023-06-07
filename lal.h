@@ -11,6 +11,7 @@ Mat lal_vec2horz_mat(Vec vec);
 Vec lal_mat2vec_by_vert(Mat mat, ll col);
 Vec lal_mat2vec_by_horz(Mat mat, ll row);
 Vec lal_transform(Vec vec, Mat transformation);
+Mat lal_mat_transform(Mat mat, Mat transformation);
 
 #ifdef LAL_IMPL
 
@@ -53,6 +54,21 @@ Vec lal_vec_transform(Vec vec, Mat transformation){
     Mat coord = lal_vec2vert_mat(vec);
     Mat transformed = mat_mul(transformation, coord);
     return lal_mat2vec_by_vert(transformed, 0);
+}
+
+Vec* lal_vecs_transform(Vec* vecs, ll vecs_size, Mat transformation){
+    ll dim = vecs[0].dim;
+    Mat mat = mat_alloc(dim, vecs_size);
+    for(ll i = 0; i < vecs_size; i++){
+        MAT_ASSERT(vecs[i].dim==dim && "The vectors dim doesnt match");
+        mat_put_col(mat, vecs[i].data, dim, i);
+    }
+    mat = mat_mul(transformation, mat);
+    Vec *new_vecs = VEC_CALLOC(sizeof(Vec), vecs_size);
+    for(ll i = 0; i < vecs_size; i++){
+        new_vecs[i] = lal_mat2vec_by_vert(mat, i);
+    }
+    return new_vecs;
 }
 
 #endif // LAL_IMPL
