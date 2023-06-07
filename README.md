@@ -36,5 +36,6 @@ make
 ```
 
 # Rederences
-my [vec](https://github.com/domonkosgyomorey/Vec/) library
-my [Mat](https://github.com/domonkosgyomorey/Mat/) library
+my [vec](https://github.com/domonkosgyomorey/Vec/) library.
+
+my [Mat](https://github.com/domonkosgyomorey/Mat/) library.
