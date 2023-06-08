@@ -30,5 +30,6 @@ int main(){
     for(ll i = 0; i < 4; i++){
         vec_print(result[i]);
     }
+
     return 0;
 }
