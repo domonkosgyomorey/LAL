@@ -10,8 +10,8 @@ Mat lal_vec2vert_mat(Vec vec);
 Mat lal_vec2horz_mat(Vec vec);
 Vec lal_mat2vec_by_vert(Mat mat, ll col);
 Vec lal_mat2vec_by_horz(Mat mat, ll row);
-Vec lal_transform(Vec vec, Mat transformation);
-Mat lal_mat_transform(Mat mat, Mat transformation);
+Vec lal_vec_transform(Vec vec, Mat transformation);
+Vec* lal_vecs_transform(Vec* vecs, ll vecs_size, Mat transformation);
 
 #ifdef LAL_IMPL
 
